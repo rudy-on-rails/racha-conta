@@ -4,7 +4,11 @@
 </head>
 <body>
 	<div id="logo" style="padding: 0px 5px 0px 10px; width: 220px; height: auto; background-color: rgb(44, 62, 80); margin-bottom: 15px;">
-		<img src="http://localhost:3000/assets/logo.png" height="60px">
+		<% if Rails.env.development? %>
+			<img src="http://localhost:3000/assets/logo.png" height="60px">
+		<% else %>
+			<img src="http://rachaaconta.herokuapp.com/assets/logo.png" height="60px">
+		<% end %>
 	</div>
 	<%= yield	 %>
 

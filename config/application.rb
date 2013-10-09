@@ -21,8 +21,14 @@ module SharingAccount
     config.active_record.whitelist_attributes = true
     config.assets.enabled = true
     config.assets.version = '1.0'
-    config.action_mailer.default_url_options = {
-    	host: "localhost:3000"
-    }
+    if Rails.env.development?
+    	config.action_mailer.default_url_options = {
+	    	host: "localhost:3000"
+  	  }
+  	else
+  		config.action_mailer.default_url_options = {
+	    	host: "rachaaconta.herokuapp.com"
+  	  }
+  	end
   end
 end
