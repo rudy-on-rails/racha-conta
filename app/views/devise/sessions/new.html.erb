@@ -1,0 +1,29 @@
+<h1>Quem é você?</h1>
+<p class="lead">Faça o login abaixo ou utilize uma das opções no menu acima</p>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="form-group">
+  	<%= f.label :email, "E-mail" %>
+  	<%= f.email_field :email, :autofocus => true, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+  	<%= f.label :password, "Senha" %>
+  	<%= f.password_field :password, :class => "form-control" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="checkbox">
+    	<label>
+    		<%= f.check_box :remember_me %> Lembrar-me
+    	</label>
+    </div>
+  <% end -%>
+
+	<button type="submit" class="btn btn-primary btn-block">Entrar</button>
+
+	<a href="" class="btn btn-info btn-block">
+		<span class="glyphicon icon-facebook"></span>
+		Entrar usando o Facebook
+	</a>
+<% end %>

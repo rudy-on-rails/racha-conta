@@ -1,0 +1,29 @@
+<% if flash[:notice] or flash[:alert] or flash[:warning] or flash[:error] %>
+	<div class="alert-row">
+		<% if flash[:alert] or flash[:notice] %>
+			<div class="alert alert-success alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<%= flash[:alert] %>
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+
+		<% if flash[:warning] %>
+			<div class="alert alert-warning alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<%= flash[:warning] %>
+			</div>
+		<% end  %>	
+
+		<% if flash[:error] %>
+			<div class="alert alert-danger alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<%= flash[:error] %>
+			</div>
+		<% end %>
+	</div>
+<% flash.discard(:notice) %>
+<% flash.discard(:error) %>
+<% flash.discard(:warning) %>
+<% flash.discard(:alert) %>
+<% end %>

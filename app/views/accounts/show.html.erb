@@ -1,0 +1,53 @@
+<h1 class="boarded"><%= @account.name %></h1>
+
+<% if @totals_by_person.any? %>
+	<div id="financial table-responsive">
+		<table class="table"> 
+			<thead>
+				<tr>
+					<th>Gasto por</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tfoot>
+	    <tr>
+	      <td></td>
+	      <td><strong><%= number_to_currency(@totals_by_person.sum(&:total_value_spent)) %></strong></td>
+	    </tr>
+		  </tfoot>
+			<tbody>
+				<% @totals_by_person.each do |total_by_person| %>
+					<tr>
+						<td><%= truncate(total_by_person.user.name) %></td>
+						<td><%= number_to_currency(total_by_person.total_value_spent) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+
+	<a type="submit" href="" class="btn btn-default btn-block">
+		<span class="glyphicon glyphicon-list"></span>
+		Detalhar gastos
+	</a>
+<% else %>
+	<p class="text-danger">
+		Atualmente você não possui nenhuma despesa em aberto
+	</p>
+<% end %>
+
+<a type="submit" href="<%= new_account_expense_path(@account) %>" class="btn btn-primary btn-block">
+	<span class="glyphicon glyphicon-plus"></span>
+	Registrar despesa
+</a>
+
+<%= content_for :menu_itens do %>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Opções da conta</a>
+  	<ul class="dropdown-menu">
+  		<li><a tabindex="1" href="<%= existent_sharings_account_path(@account) %>">Compartilhamentos</a></li>
+  		<li><a tabindex="2">Histórico de gastos</a></li>
+  		<li><a tabindex="3" href="<%= close_current_group_account_path(@account) %>" data-confirm="Confirma fechamento do período?">Encerrar período</a></li>
+  	</ul>
+  </li>
+<% end %>

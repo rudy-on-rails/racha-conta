@@ -1,0 +1,14 @@
+<h1>Novo compartilhamento</h1>
+<p class="lead">Digite abaixo um e-mail para compartilhar esta conta:</p>
+<%= form_for(@account, url: set_sharing_account_path(@account)) do |f| %>
+	<div class="form-group">
+		<%= email_field_tag "email",
+			nil, 
+			{placeholder: "Email", 
+			:autofocus => true,
+			:required => true,
+			class: "form-control"} %>
+	</div>
+	<%= link_to "Voltar", account_path(@account), class: "btn btn-default" %>
+	<%= f.button "Compartilhar", class: "btn btn-primary pull-right"  %>
+<% end %>

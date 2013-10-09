@@ -1,0 +1,4 @@
+<p>Olá, <%= @account_share.email %>.</p>
+<p><%= @user_sharing.name %> deseja compartilhar uma conta em nosso site com você.</p>
+<p>Para visualizar os detalhes desta conta, faça seu cadastro em nosso site, através do link abaixo:</p>
+<%= link_to "Cadastrar-me", new_user_registration_url(:token => @account_share.token) %>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Racha a Conta</title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+  <%= csrf_meta_tags %>
+</head>
+<%= render "shared/site_header" %>
+<body>
+	
+	<div class="container">
+		<div class="row">
+  		<div class="col-lg-offset-2 col-lg-8">
+  			<div id="alert">
+					<%= render "shared/alerts" %>
+				</div>
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

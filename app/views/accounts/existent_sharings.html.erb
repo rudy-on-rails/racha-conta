@@ -1,0 +1,35 @@
+<h1>Compartilhamentos</h1>
+<p class="lead">Compartilhamentos da conta "<%= @account.name %>":</p>
+<% if @account.shared_with.any? or @account.account_shares.any? %>
+	<div id="table-responsive">
+		<table class="table"> 
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @account.shared_with.each do |user| %>
+					<tr>
+						<td><%= user.email %></td>
+						<td><%= link_to("Cancelar", remove_sharing_account_path(@account, :user_id => user.id), method: "delete", class: "btn btn-xs btn-danger") if @account.created_by?(current_user) %></td>
+					</tr>
+				<% end %>
+				<% @account.account_shares.each do |account_share| %>
+					<tr>
+						<td><%= account_share.email %></td>
+						<td><%= link_to("Cancelar", account_account_share_path(@account, account_share), method: "delete", class: "btn btn-xs btn-danger") if @account.created_by?(current_user) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+<% else %>
+	<p class="text-danger">
+		Atualmente esta conta não está compartilhada com ninguém
+	</p>
+<% end %>
+
+<%= link_to "Voltar", account_path(@account), class: "btn btn-default" %>
+<%= link_to "Novo compartilhamento", share_account_path(@account), class: "btn btn-primary pull-right"  %>

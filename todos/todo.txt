@@ -1,0 +1,4 @@
+- Detalhar contas por pessoa na tela de balanço
+- Ajuste views devise
+- Permitir compartilhar conta
+- Finalizar tela de balanço (podendo fechar período)

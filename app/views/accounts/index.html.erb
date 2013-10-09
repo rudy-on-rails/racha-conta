@@ -1,0 +1,35 @@
+<h1>Minhas Contas</h1>
+<p class="lead">Lista das contas compartilhadas e criadas por você</p>
+
+<% if  @my_accounts.any? %>
+	<div clas="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Conta</th>
+					<th>Criada por</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @my_accounts.each do |account| %>
+					<tr id="account_<%= account.id %>">
+						<td><%= link_to(account.name, account_path(account)) %></td>
+						<td><%= account.creator.name %></td>
+						<td><%= link_to("Editar", edit_account_path(account) , class: "btn btn-xs btn-default") if account.created_by?(current_user) %></td>
+						<td><%= link_to("Excluir", account_path(account), method: "delete" ,class: "btn btn-xs btn-danger", remote: true) if account.created_by?(current_user) %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+<% else %>
+	<p class="text-danger">
+		Atualmente você não possui nenhuma conta cadastrada
+	</p>
+	<a type="submit" href="<%= new_account_path %>" class="btn btn-default btn-block">
+		<span class="glyphicon glyphicon-plus"></span>
+		Cadastrar nova conta
+	</a>
+<% end %>

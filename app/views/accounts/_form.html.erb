@@ -1,0 +1,10 @@
+<%= form_for(@account) do |f| %>
+	<div class="form-group <%= @account.errors.any? ? "has-error" : "" %>">
+		<%= f.text_field :name, 
+		placeholder: "Nome da conta", 
+		:autofocus => true,
+		class: "form-control" %>
+	</div>
+	<%= link_to "Voltar", accounts_path, class: "btn btn-default" %>
+	<%= f.button "Criar", class: "btn btn-primary pull-right"  %>
+<% end %>
