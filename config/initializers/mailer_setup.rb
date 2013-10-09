@@ -5,6 +5,6 @@ ActionMailer::Base.smtp_settings = {
   domain: "gmail.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: APPSETTINGS["gmail_username"],
-  password: APPSETTINGS["gmail_password"]
+  user_name: ENV["gmail_username"],
+  password: ENV["gmail_password"]
 }
