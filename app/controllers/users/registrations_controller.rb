@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	before_filter :find_token
   def new
 		build_resource({})
-  	resource.email = @account_share.email
+  	resource.email = @account_share.email if @account_share
   	respond_with self.resource
   end
 
