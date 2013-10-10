@@ -19,4 +19,12 @@ SharingAccount::Application.routes.draw do
   	resources :expenses, except: :index
   	resources :account_shares, only: :destroy
   end
+
+  namespace :api do
+  	resources :expenses, only: [] do
+  		collection do
+  			get 'categories'
+  		end
+  	end
+  end
 end
