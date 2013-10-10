@@ -1,0 +1,40 @@
+<h1>Detalhes - <%= @account.name %></h1>
+<p class="lead"><%= l(DateTime.now, format: :short) %></p>
+
+<div id="container" style="width:100%; height:400px;" data-api-url="<%= total_by_category_api_expense_group_path(@expense_group) %>">
+</div>
+
+<script type="text/javascript">
+$(function () {
+	var dataUrl = $('#container').data("api-url");
+	$.get(dataUrl).success(function(dataRetrieved){
+		$('#container').highcharts({
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Total (R$) por Categoria'
+        },
+        tooltip: {
+    	    pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: R$ {point.y:.2f}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            data: dataRetrieved
+        }]
+    });
+	});
+});
+</script>

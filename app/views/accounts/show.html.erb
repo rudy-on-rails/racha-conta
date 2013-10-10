@@ -26,7 +26,7 @@
 		</table>
 	</div>
 
-	<a type="submit" href="" class="btn btn-default btn-block">
+	<a type="submit" href="<%= expense_group_path(@account.find_or_create_a_current_expense_group) %>" class="btn btn-default btn-block">
 		<span class="glyphicon glyphicon-list"></span>
 		Detalhar gastos
 	</a>
@@ -36,7 +36,7 @@
 	</p>
 <% end %>
 
-<a type="submit" href="<%= new_account_expense_path(@account) %>" class="btn btn-primary btn-block">
+<a href="<%= new_account_expense_path(@account) %>" class="btn btn-primary btn-block">
 	<span class="glyphicon glyphicon-plus"></span>
 	Registrar despesa
 </a>

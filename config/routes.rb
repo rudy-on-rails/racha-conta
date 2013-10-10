@@ -20,10 +20,17 @@ SharingAccount::Application.routes.draw do
   	resources :account_shares, only: :destroy
   end
 
+  resources :expense_groups, only: [:show]
+
   namespace :api do
   	resources :expenses, only: [] do
   		collection do
   			get 'categories'
+  		end
+  	end
+  	resources :expense_groups, only: [] do
+  		member do
+  			get 'total_by_category'
   		end
   	end
   end

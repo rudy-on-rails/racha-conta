@@ -1,5 +1,5 @@
 module Api
-	class ExpensesController < ApplicationController
+	class ExpensesController < ApiController
 		require_dependency 'expense_category_repository'
 
 		def categories			

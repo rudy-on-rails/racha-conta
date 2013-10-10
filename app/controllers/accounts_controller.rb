@@ -81,18 +81,6 @@ class AccountsController < AuthenticatedController
 	def find_account
 		@account = Account.find(params[:id]) if params[:id]
 		@account = Account.find(params[:account_id]) if params[:account_id]
-		validate_user_can_access!(@account)
-	end
-
-	def validate_user_can_access!(account)
-		unless current_user.accounts_shared_and_created.include?(account)
-			raise InsufficientPermissionError, "Você não possui permissão de acesso a esta conta!"
-		end			
-	end
-
-	def validate_user_is_owner_of_the_account!
-		unless @account.created_by?(current_user)
-			raise InsufficientPermissionError, "Apenas o usuário que criou a conta pode realizar esta ação!"
-		end
+		validate_user_can_access_account!
 	end
 end
