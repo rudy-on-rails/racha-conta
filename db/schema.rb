@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008224428) do
+ActiveRecord::Schema.define(:version => 20131010130605) do
 
   create_table "account_shares", :force => true do |t|
     t.string   "token",      :null => false
@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(:version => 20131008224428) do
 
   create_table "expenses", :force => true do |t|
     t.string   "name"
-    t.integer  "expense_type_id"
     t.integer  "expense_group_id", :null => false
     t.decimal  "value"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "spent_by_user_id", :null => false
+    t.string   "category"
   end
 
   create_table "shared_accounts", :id => false, :force => true do |t|
