@@ -1,0 +1,15 @@
+$(document).ready(function(){
+	var categoriesUrl = "/api/expenses/categories.json";
+
+	var retrieveCategories = function(){
+		$.get(categoriesUrl).success(onRetrievedCategories);
+	};
+	
+	var onRetrievedCategories = function(data){
+		$('#expense_category').typeahead({                                
+		  name: 'Categoria',                                                          
+		  local: data
+		});
+	};
+	retrieveCategories();
+});

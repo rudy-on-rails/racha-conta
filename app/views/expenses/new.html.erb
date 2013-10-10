@@ -4,13 +4,17 @@
 <%= form_for([@account, @expense]) do |f| %>
 	<div class="form-group">
 		<%= f.text_field :name, 
-			placeholder: "Despesa", 
+			placeholder: "Descrição", 
 			:autofocus => true,
 			class: "form-control" %>
 	</div>
+	
 	<div class="form-group">
-		<%= select(:expense, :expense_type_id, @types , {include_blank: "Sem Categoria"}, {class: "form-control"}) %>
+		<%= f.text_field :category, 
+			placeholder: "Categoria", 
+			class: "form-control" %>
 	</div>
+
 	<div class="form-group <%= @expense.errors[:value].any? ? "has-error" : "" %>">
 		<%= f.text_field :value, 
 		placeholder: "Valor (R$)", 
@@ -21,3 +25,5 @@
 	<%= link_to "Voltar", account_path(@account), class: "btn btn-default" %>
 	<%= f.button "Criar", class: "btn btn-primary pull-right"  %>
 <% end %>
+
+<%= javascript_include_tag "expenses/new.js.erb" %>

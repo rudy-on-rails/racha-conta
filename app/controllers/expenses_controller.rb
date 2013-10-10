@@ -1,7 +1,6 @@
 #encoding: utf-8
 class ExpensesController < AccountsController
 	before_filter :find_account
-	before_filter :instantiate_types
 	
 	def new
 		@expense = Expense.new		
@@ -17,9 +16,5 @@ class ExpensesController < AccountsController
 		else
 			render :new
 		end
-	end
-
-	def instantiate_types
-		@types = ExpenseType.order("name").map{|e| [e.name, e.id]}
 	end
 end
