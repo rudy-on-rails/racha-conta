@@ -3,6 +3,13 @@
 
 <div id="container" style="width:100%; height:400px;" data-api-url="<%= total_by_category_api_expense_group_path(@expense_group) %>">
 </div>
+<br>
+<a type="submit" href="<%=account_path(@account) %>" class="btn btn-primary btn-block">
+	<span class="glyphicon glyphicon-chevron-left"></span>
+	Voltar
+</a>
+<br>
+
 
 <script type="text/javascript">
 $(function () {
@@ -16,18 +23,21 @@ $(function () {
             text: 'Total (R$) por Categoria'
         },
         tooltip: {
-    	    pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+    	    pointFormat: '<b>R${point.y:.2f}</b>'
         },
         plotOptions: {
             pie: {
                 allowPointSelect: true,
                 cursor: 'pointer',
+                size: "95%",
                 dataLabels: {
-                    enabled: true,
-                    color: '#000000',
-                    connectorColor: '#000000',
-                    format: '<b>{point.name}</b>: R$ {point.y:.2f}'
-                }
+                  enabled: false,
+                  color: '#000000',
+                  distance: -20,
+                  connectorColor: '#000000',
+                  format: '<b>{point.name}</b>'
+                },
+                showInLegend: true
             }
         },
         series: [{
