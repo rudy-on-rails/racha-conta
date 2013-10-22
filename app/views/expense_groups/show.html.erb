@@ -1,8 +1,21 @@
 <h1>Detalhes - <%= @account.name %></h1>
 <p class="lead"><%= l(DateTime.now, format: :short) %></p>
 
-<div id="container" style="width:100%; height:400px;" data-api-url="<%= total_by_category_api_expense_group_path(@expense_group) %>">
+<ul class="nav nav-tabs" id="detailsTab">
+  <li class="active"><a href="#chart" data-toggle="tab">Gráfico</a></li>
+  <li><a href="#list" data-toggle="tab">Lista</a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="chart">
+		<div id="container" style="width:100%; height:400px;" data-api-url="<%= total_by_category_api_expense_group_path(@expense_group) %>">
+		</div>
+	</div>
+	<div class="tab-pane table-responsive" id="list">
+		<%= render partial: "expenses_list" %>
+	</div>
 </div>
+
 <br>
 <a type="submit" href="<%=account_path(@account) %>" class="btn btn-primary btn-block">
 	<span class="glyphicon glyphicon-chevron-left"></span>
@@ -13,6 +26,7 @@
 
 <script type="text/javascript">
 $(function () {
+	$('#detailsTab a:first').tab('show');
 	var dataUrl = $('#container').data("api-url");
 	$.get(dataUrl).success(function(dataRetrieved){
 		$('#container').highcharts({

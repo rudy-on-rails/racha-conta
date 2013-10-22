@@ -1,29 +1,6 @@
 <h1>Nova Despesa</h1>
 <p class="lead">Será adicionada à conta "<%= @account.name %>"</p>
 
-<%= form_for([@account, @expense]) do |f| %>
-	<div class="form-group">
-		<%= f.text_field :name, 
-			placeholder: "Descrição", 
-			:autofocus => true,
-			class: "form-control" %>
-	</div>
-	
-	<div class="form-group">
-		<%= f.text_field :category, 
-			placeholder: "Categoria", 
-			class: "form-control" %>
-	</div>
-
-	<div class="form-group <%= @expense.errors[:value].any? ? "has-error" : "" %>">
-		<%= f.text_field :value, 
-		placeholder: "Valor (R$)", 
-		:type => "number",
-		:step => "0.5",
-		class: "form-control" %>
-	</div>
-	<%= link_to "Voltar", account_path(@account), class: "btn btn-default" %>
-	<%= f.button "Criar", class: "btn btn-primary pull-right"  %>
-<% end %>
+<%= render partial: "form" %>
 
 <%= javascript_include_tag "expenses/new.js.erb" %>

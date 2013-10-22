@@ -11,4 +11,10 @@ module AccountValidations
 			raise InsufficientPermissionError, "Apenas o usuário que criou a conta pode realizar esta ação!"
 		end
 	end
+
+	def validate_user_can_change_expense!
+		unless @expense.can_be_modified_by?(current_user)
+			raise InsufficientPermissionError, "Apenas o usuário que criou a despesa e administradores da conta podem realizar esta ação!"
+		end
+	end
 end

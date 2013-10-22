@@ -79,8 +79,8 @@ class AccountsController < AuthenticatedController
 
 	private
 	def find_account
-		@account = Account.find(params[:id]) if params[:id]
 		@account = Account.find(params[:account_id]) if params[:account_id]
+		@account = Account.find(params[:id]) if params[:id] and @account.nil?
 		validate_user_can_access_account!
 	end
 end

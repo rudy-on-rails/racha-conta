@@ -22,7 +22,7 @@ class Account < ActiveRecord::Base
   end
 
   def created_by?(user)
-  	user.accounts_created.include?(self)
+  	self.creator == user
   end
 
   def shared_with?(user)

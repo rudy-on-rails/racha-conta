@@ -1,0 +1,24 @@
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Valor</th>
+			<th>Gasto por</th>
+			<th>Categoria</th>
+			<th>Data</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @expense_group.expenses.each do |expense| %>
+			<tr id="expense_<%= expense.id %>">
+				<td><%= number_to_currency(expense.value) %></td>
+				<td><%= expense.spent_by.name %></td>
+				<td><%= expense.category %></td>
+				<td><%= l(expense.created_at, format: :short) %></td>
+				<td><%= link_to("Editar", edit_account_expense_path(@account, expense) , class: "btn btn-xs btn-default") if expense.can_be_modified_by?(current_user) %></td>
+				<td><%= link_to("Excluir", account_expense_path(@account, expense), method: "delete" ,class: "btn btn-xs btn-danger", remote: true) if expense.can_be_modified_by?(current_user) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
