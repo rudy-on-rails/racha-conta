@@ -24,6 +24,13 @@ SharingAccount::Application.routes.draw do
   resources :expense_groups, only: [:show]
 
   namespace :api do
+
+    resources :accounts, only: [] do
+    	member do
+    		get 'history_categorized/:year' => "accounts#history_categorized"
+    	end
+    end
+
   	resources :expenses, only: [] do
   		collection do
   			get 'categories'

@@ -14,25 +14,27 @@ module Analytics
 		end
 
 		class ExpenseTotalsByCategory
+			attr_reader :categorized_data
 			def initialize
-				@expense_totals_by_month = {}
+				@categorized_data = {}
 			end
 
 			def add_expense_value(category, value)
-				@expense_totals_by_month[category] ||= 0
-				@expense_totals_by_month[category] += value
+				category = "Sem Categoria" if category.nil?
+				@categorized_data[category] ||= 0
+				@categorized_data[category] += value
 			end
 
 			def total
 				total = 0
-				@expense_totals_by_month.each do |category, value|
+				@categorized_data.each do |category, value|
 					total += value
 				end
 				total
 			end
 
 			def by_category(category)
-				@expense_totals_by_month[category]
+				@categorized_data[category]
 			end
 		end
 	end
