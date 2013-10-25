@@ -77,6 +77,10 @@ class AccountsController < AuthenticatedController
 		redirect_to account_path(@account)
 	end
 
+	def account_history
+		
+	end
+
 	private
 	def find_account
 		@account = Account.find(params[:account_id]) if params[:account_id]

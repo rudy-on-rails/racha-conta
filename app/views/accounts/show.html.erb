@@ -46,7 +46,7 @@
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Opções da conta</a>
   	<ul class="dropdown-menu">
   		<li><a tabindex="1" href="<%= existent_sharings_account_path(@account) %>">Compartilhamentos</a></li>
-  		<li><a tabindex="2">Histórico de gastos</a></li>
+  		<li><a href="<%= account_history_account_path(@account) %>" tabindex="2">Histórico de gastos</a></li>
   		<li><a tabindex="3" href="<%= close_current_group_account_path(@account) %>" data-confirm="Confirma fechamento do período?">Encerrar período</a></li>
   	</ul>
   </li>

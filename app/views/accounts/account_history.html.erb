@@ -1,0 +1,63 @@
+<h1><%= @account.name %></h1>
+<p class="lead">Histórico de despesas</p>
+
+<ul class="nav nav-tabs" id="detailsTab">
+  <li class="active"><a href="#chart" data-toggle="tab">Gráfico</a></li>
+  <li><a href="#list" data-toggle="tab">Lista</a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="chart">
+		<div id="container" style="width:100%; height:400px;" data-api-url="">
+		</div>
+	</div>
+	<div class="tab-pane table-responsive" id="list">
+	</div>
+</div>
+
+<br>
+<a type="submit" href="<%=account_path(@account) %>" class="btn btn-primary btn-block">
+	<span class="glyphicon glyphicon-chevron-left"></span>
+	Voltar
+</a>
+<br>
+
+
+<script type="text/javascript">
+$(function () {
+	$('#detailsTab a:first').tab('show');
+	// var dataUrl = $('#container').data("api-url");
+	// $.get(dataUrl).success(function(dataRetrieved){
+	// 	$('#container').highcharts({
+ //        chart: {
+ //            type: 'pie'
+ //        },
+ //        title: {
+ //            text: 'Total (R$) por Categoria'
+ //        },
+ //        tooltip: {
+ //    	    pointFormat: '<b>R${point.y:.2f}</b>'
+ //        },
+ //        plotOptions: {
+ //            pie: {
+ //                allowPointSelect: true,
+ //                cursor: 'pointer',
+ //                size: "95%",
+ //                dataLabels: {
+ //                  enabled: false,
+ //                  color: '#000000',
+ //                  distance: -20,
+ //                  connectorColor: '#000000',
+ //                  format: '<b>{point.name}</b>'
+ //                },
+ //                showInLegend: true
+ //            }
+ //        },
+ //        series: [{
+ //            type: 'pie',
+ //            data: dataRetrieved
+ //        }]
+ //    });
+	// });
+});
+</script>

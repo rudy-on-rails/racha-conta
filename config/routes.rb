@@ -10,6 +10,7 @@ SharingAccount::Application.routes.draw do
   resources :accounts do
   	member do
   		get :existent_sharings
+  		get :account_history
 	  	get :share
 	  	get :close_current_group
 	  	put :set_sharing
