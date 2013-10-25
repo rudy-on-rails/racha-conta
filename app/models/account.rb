@@ -3,6 +3,7 @@ class Account < ActiveRecord::Base
   belongs_to :creator, class_name: "User", foreign_key: :user_created_id
   has_and_belongs_to_many :shared_with, class_name: "User", join_table: :shared_accounts
   has_many :expense_groups, dependent: :restrict
+  has_many :expenses, through: :expense_groups
   has_many :account_shares
   validates_presence_of :name
 
@@ -19,6 +20,10 @@ class Account < ActiveRecord::Base
   	else
   		[]
   	end
+  end
+
+  def expenses_of(year)
+  	expenses.where("expenses.created_at like ?", "#{year}%")
   end
 
   def created_by?(user)
