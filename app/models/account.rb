@@ -23,7 +23,7 @@ class Account < ActiveRecord::Base
   end
 
   def expenses_of(year)
-  	expenses.where("expenses.created_at like ?", "#{year}%")
+  	expenses.where("EXTRACT(YEAR FROM expenses.created_at) = ?", "#{year}")
   end
 
   def created_by?(user)
