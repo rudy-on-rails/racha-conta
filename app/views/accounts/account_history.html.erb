@@ -21,43 +21,4 @@
 	Voltar
 </a>
 <br>
-
-
-<script type="text/javascript">
-$(function () {
-	$('#detailsTab a:first').tab('show');
-	// var dataUrl = $('#container').data("api-url");
-	// $.get(dataUrl).success(function(dataRetrieved){
-	// 	$('#container').highcharts({
- //        chart: {
- //            type: 'pie'
- //        },
- //        title: {
- //            text: 'Total (R$) por Categoria'
- //        },
- //        tooltip: {
- //    	    pointFormat: '<b>R${point.y:.2f}</b>'
- //        },
- //        plotOptions: {
- //            pie: {
- //                allowPointSelect: true,
- //                cursor: 'pointer',
- //                size: "95%",
- //                dataLabels: {
- //                  enabled: false,
- //                  color: '#000000',
- //                  distance: -20,
- //                  connectorColor: '#000000',
- //                  format: '<b>{point.name}</b>'
- //                },
- //                showInLegend: true
- //            }
- //        },
- //        series: [{
- //            type: 'pie',
- //            data: dataRetrieved
- //        }]
- //    });
-	// });
-});
-</script>
+<%= javascript_include_tag "accounts/account_history" %>

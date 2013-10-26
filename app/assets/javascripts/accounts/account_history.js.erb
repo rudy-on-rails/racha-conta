@@ -1,0 +1,33 @@
+$(function(){
+	$('#detailsTab a:first').tab('show');
+	var onDataRetrived = function(data) {
+		$('#container').highcharts({
+	       xAxis: {
+	       	categories: data["categories"]
+	       },
+	       title: {
+	           text: 'Total Gasto por Mês'
+	       },
+	       tooltip: {
+	   	    pointFormat: '<b>R${point.y:.2f}</b>'
+	       },
+	       plotOptions: {
+	           pie: {
+	               allowPointSelect: true,
+	               cursor: 'pointer',
+	               size: "95%",
+	               dataLabels: {
+	                 enabled: false,
+	                 color: '#000000',
+	                 distance: -20,
+	                 connectorColor: '#000000',
+	                 format: '<b>{point.name}</b>'
+	               },
+	               showInLegend: true
+	           }
+	       },
+	       series: data["series"]
+	   });
+	}
+	$.get("http://localhost:3000/api/accounts/1/history_categorized/2013").success(onDataRetrived);
+});
