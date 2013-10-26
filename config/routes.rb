@@ -27,7 +27,7 @@ SharingAccount::Application.routes.draw do
 
     resources :accounts, only: [] do
     	member do
-    		get 'history_categorized/:year' => "accounts#history_categorized"
+    		get 'history_categorized/:year' => "accounts#history_categorized", as: :history
     	end
     end
 

@@ -29,5 +29,6 @@ $(function(){
 	       series: data["series"]
 	   });
 	}
-	$.get("http://localhost:3000/api/accounts/1/history_categorized/2013").success(onDataRetrived);
+	var dataUrl = $('#container').data("api-url");
+	$.get(dataUrl).success(onDataRetrived);
 });
