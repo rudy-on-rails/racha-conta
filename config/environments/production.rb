@@ -46,9 +46,10 @@ SharingAccount::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( expenses/new.js.erb )
+  config.assets.precompile += %w( expenses/new.js )
   config.assets.precompile += %w( highcharts_setup.js )
-  config.assets.precompile += %w( accounts/account_history.js.erb )
+  config.assets.precompile += %w( highcharts_theme.js )
+  config.assets.precompile += %w( accounts/account_history.js )
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
