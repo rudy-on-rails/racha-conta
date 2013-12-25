@@ -69,7 +69,8 @@ class AccountsController < AuthenticatedController
 	end
 
 	def show
-		@totals_by_person = Analytics::ExpenseTotalsByPerson.new(@account).sumarize_total_spent_by_person
+		@expense_totals_by_person = Analytics::ExpenseTotalsByPerson.new(@account)
+		@expense_totals_by_person_array = @expense_totals_by_person.sumarize_total_spent_by_person		
 	end
 
 	def edit

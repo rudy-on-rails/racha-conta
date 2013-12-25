@@ -1,6 +1,6 @@
 <h1 class="boarded"><%= @account.name %></h1>
 
-<% if @totals_by_person.any? %>
+<% if @expense_totals_by_person_array.any? %>
 	<div id="financial table-responsive">
 		<table class="table"> 
 			<thead>
@@ -11,12 +11,16 @@
 			</thead>
 			<tfoot>
 	    <tr>
-	      <td></td>
-	      <td><strong><%= number_to_currency(@totals_by_person.sum(&:total_value_spent)) %></strong></td>
+	      <td><strong>Total Geral</strong></td>
+	      <td><strong><%= number_to_currency(@expense_totals_by_person_array.sum(&:total_value_spent)) %></strong></td>
+	    </tr>
+	    <tr>
+	    	<td><strong>Racha / Pessoa</strong></td>
+	    	<td><strong><%= number_to_currency(@expense_totals_by_person.ammount_to_share_per_person) %></strong></td>
 	    </tr>
 		  </tfoot>
 			<tbody>
-				<% @totals_by_person.each do |total_by_person| %>
+				<% @expense_totals_by_person_array.each do |total_by_person| %>
 					<tr>
 						<td><%= truncate(total_by_person.user.name) %></td>
 						<td><%= number_to_currency(total_by_person.total_value_spent) %></td>
