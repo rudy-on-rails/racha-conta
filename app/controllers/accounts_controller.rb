@@ -22,6 +22,14 @@ class AccountsController < AuthenticatedController
 		end
 	end
 
+	def update
+		if @account.update_attributes(params[:account])
+			redirect_to existent_sharings_account_path(@account)
+		else
+			render :edit
+		end
+	end
+
 	def destroy
 		@id = @account.id
 		unless @account.created_by?(current_user)
